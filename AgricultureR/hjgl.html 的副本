@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		<title>农地确权数据成果汇交管理系统V1.1</title>
+		
+		<link href="css/jquery-ui.min.css" rel="stylesheet">		
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet">
+		<link href="css/bootstrapValidator.min.css" rel="stylesheet">
+		<link href="css/select2.min.css" rel="stylesheet">		
+		<link rel="stylesheet" href="css/daterangepicker.css" />
+		<link href="http://localhost/jsapi/3.15/esri/css/esri.css">
+		<link href="css/XTGL-YHGL-XDF.css" rel="stylesheet">
+		<link href="css/custom427.css" rel="stylesheet">	
+		
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/browser.js"></script>
+		<script src="js/jquery-ui.min.js"></script>		
+		<script src="js/jquery.fileupload.js"></script>
+		<script src="js/jquery.iframe-transport.js"></script>
+		<script src="js/jquery.jqprint-0.3.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-editable.min.js"></script>
+		<script src="js/bootstrap-editable.js"></script>
+		<script src="js/bootstrap-table-locale-all.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-suggest.js"></script>
+		<script src="js/bootstrapValidator.min.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="assets/js/hjgl.js"></script>
+		<script src="js/mindmup-editabletable.js"></script>
+		<scirpt src="js/numeric-input-example.js"></scirpt>
+		<script src="js/echarts-all.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/jquery.daterangepicker.js"></script>
+		<script src="js/timelineOption.js"></script>
+		<script src="http://localhost/jsapi/3.15/"></script>
+		
+	</head>
+	<body>
+		<nav class="banner">
+			<div class="logoPane">
+				<!--<span class="titlePane">农地确权数据成果汇交管理系统</span>-->
+				<span><img src="img/logo.png" ></span>
+			</div>
+			<div class="navPane">
+				<ul class="navMenu">
+					<li><a class="navActive" href="#">汇交预约</a></li>
+					<li><a href="#">汇交处理</a></li>
+					<li><a href="#">成果管理</a></li>
+					<li><a href="#">数据分析</a></li>
+					<li><a href="#">系统管理</a></li>
+				</ul>
+			</div>
+			<div class="tipsPane">
+				<ul class="tipAuthor">
+					<li>
+						<span><img src="img/potrait.png" /></span>
+						<span class="tipFont">刘曼</span>
+					</li>
+					<li>
+						<span><img src="img/quit.png" /> </span>
+					</li>
+					<li>
+						<span><img src="img/help.png" /> </span>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div id="paneLevel1" class="paneLevel1">
+		</div>
+		<div class="footer">
+			<span>copyrights@农业规划设计研究院</span>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="dialogModalSeg_5" tabindex="-1" role="dialog" aria-labelledby="modalTitleSeg_5" aria-hidden="true" style="display: none;">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 id="modalTitleSeg_5" class="modal-title">汇交预约完成</h4>
+		      </div>
+		      <div id="modalContentSeg_5" class="modal-body">
+		         汇交数据预约完成，是否进行汇交处理？
+		      </div>
+		      <div id="modalFooterSeg-5" class="modal-footer">
+		        <button id="hjyyRepeat"  type="button" class="btn btn-default" data-dismiss="modal">继续预约</button>	  
+		        <button id="hjclBegin" type="button" class="btn btn-default" data-dismiss="modal">汇交处理</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			
+		
+	</body>
+</html>
