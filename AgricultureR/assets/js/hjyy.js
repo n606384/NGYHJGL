@@ -87,6 +87,7 @@ $(function(){
 			$("ul.statusMenu li:eq(0)>div[class= statusPane]> div").attr("class","statusCircleActive");
 			$("ul.statusMenu li:eq(0)>div[class= statusPane]> div>div").attr("class","statusCircleSMActive");
 			//表单验证
+			/*
 			$('#hjryxx').bootstrapValidator({
 		        message: '该值不是有效值',
 		        feedbackIcons: {
@@ -150,7 +151,8 @@ $(function(){
 		    
 	  	 $('#hjryxx').bootstrapValidator("validate");			
 			
-			
+			*/
+		
 		}
 		else if(flag == 1){
 			$('#btnLeft').html("重 置");

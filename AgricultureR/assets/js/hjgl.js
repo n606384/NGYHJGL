@@ -337,20 +337,9 @@ $(function(){
 		});
 	})
 	
-	function resize(){
-		
-		var heightL1 = (document.body.clientHeight - 104)+"px";
-		var widthL1 = (document.body.clientWidth)+"px";
-				
-		$("#paneLevel1").height(heightL1);
-		$("#paneLevel1").width(widthL1);
-		$("#paneLevel1").css({"padding":'0px', margin:'0px'});
-				
-	}
 	
-	$(window).resize(resize);
 	function initHJGL(){
-		resize();
+		
 		$("#paneLevel1").empty();
 		$.ajax({
 			type:"get",

@@ -56,10 +56,10 @@
 						//window.location.href = "GetJson.html?token="+app.token;
 						$.ajax({
 							type:"post",
-							url:"http://192.168.44.232:8080/rest/hzbg/addQSDWDMB?token=ddd",
+							url:"http://192.168.44.232:8080/rest/hjgl/getSJBXXXX?token=ddd",
 							async:true,
 							data:{
-								"qsdwdmb":"/home/flask/app/uploadFile/qsdwbm20160518164508886020_3408262015.xls"
+								"sjbbm":"70"
 							},
 							success:function(data){
 								console.log("提交结果",data);

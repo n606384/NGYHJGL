@@ -26,6 +26,7 @@
 			var id = dataset.id;
 			var name = dataset.name;
 			$("#sjblx").val(name);
+			$('#sjbForm').bootstrapValidator('validate');
 		});
 		$("#hjsjbjzList li").on('click', function(e){
 			
@@ -33,6 +34,7 @@
 			var id = dataset.id;
 			var name = dataset.name;
 			$("#hjsjbjz").val(name);
+			$('#sjbForm').bootstrapValidator('validate');
 		});
 		
 		//表单验证

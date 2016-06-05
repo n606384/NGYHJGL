@@ -165,6 +165,15 @@ $(function(){
 									app.xianName += keyword.key;
 									app.xianbm = keyword.id;
 									//console.log("app.xianbm",app);
+									
+									$("#hjdwxz").val("");		
+									$("#hjdwmc").val("");
+									$("#hjdwdz").val("");
+									$("#hjrxm").val("");
+									$("#lxdh").val("");
+									$("#lxyx").val("");
+									$("#txdz").val("");
+									
 									fullfillDropMenu();
 									$("#countySpan").empty();
 									$("#countySpan").html(app.xianName);

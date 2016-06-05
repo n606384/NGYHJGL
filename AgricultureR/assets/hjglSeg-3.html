@@ -1,9 +1,9 @@
-<div style="width: 95%;height: 100%;margin: 20px auto;">
+<div style="width: 95%;height: 100%;margin: 5px auto;">
 	<ul class="nav nav-tabs hjgl_TabPane" role="tablist">
 	    <li role="presentation" class="active"><a href="#first_cggl" aria-controls="first_cggl" role="tab" data-toggle="tab">总体情况</a></li>
-	    <li role="presentation"><a href="#hjdy_cggl" aria-controls="hjdy_cggl" role="tab" data-toggle="tab">汇交成果</a></li>
+	    <li role="presentation"><a href="#hjdy_cggl" aria-controls="hjdy_cggl" role="tab" data-toggle="tab">汇交单元</a></li>
 	    <li role="presentation"><a href="#zjcg_cggl" aria-controls="zjcg_cggl" role="tab" data-toggle="tab">质检成果</a></li>
-	     <li role="presentation"><a href="#hjxq_cggl" aria-controls="hjxq_cggl" role="tab" data-toggle="tab">汇交详情</a></li>
+	     <li role="presentation"><a href="#sjl_cggl" aria-controls="sjl_cggl" role="tab" data-toggle="tab">数据量统计</a></li>
 	</ul>
 	<div id="tabContentDiv" class="tab-content">
 		<div id="first_cggl" role="tabpanel" class="tab-pane active" style="width: 100%;height: 100%;">
@@ -79,88 +79,97 @@
 				
 			</div>
 			<div class="container_hjdy">
-				<div style="float:left;width: 30%;height: 100%;border-right: solid 3.5px #EDEDED;">
+				<div style="float:left;width: 40%;height: 100%;border-right: solid 3.5px #EDEDED;">
 					<div style="height: 100%;width: 100%;">
+						<h3 style="width: 100%;text-align: center;">全国各省汇交业务情况统计(单位:个)</h3>
 						<table class="table table-striped">
 							<thead>
-				              <th colspan="3" style="text-align: center;">全国汇交单元统计情况</th>
+				             <th>区域</th>
+				             <th>应汇交单元数据量(个)</th>
+				             <th>汇交单元提交数量(个)</th>
+				             <th>汇交单元通过数量(个)</th>
+				             <th>汇交通过率(%)</th>
+				             <th>汇交率(%)</th>
+				             <th>汇交次数(次)</th>
+				             <th>地块数量(块)</th>
+				             			             
 				            </thead>
 				            <tbody>
 				            <tr>
-				                <td>合计项</td>
-				                <td colspan = "2" style="text-align: center;">数量</td>
+				                <td>全国</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
 				               
-				              </tr>
-				              <tr>
-				                <td>汇交单元个数总计(个):</td>
-				                <td colspan = "2" style="text-align: center;">16</td>
 				               
-				              </tr>
-				            <tr>
-				               	<td>汇交次数总计(个):</td>
-				                <td colspan = "2" style="text-align: center;">32</td>
 				            </tr>
 				            <tr>
-				                <td>汇交数据量合计(GB):</td>
-				                <td colspan = "2" style="text-align: center;">32</td>
+				                <td>北京</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				               
+				               
+				            </tr>	
+				            <tr>
+				                <td>河北</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				               
+				               
 				            </tr>
 				            <tr>
-				              	<td colspan="3" style="text-align: center;font-family: '微软雅黑';font-weight: bold;font-style: italic;">数据分类详情</td>
-				            </tr>
-				            <tr>
-				                <td>汇交数据类型</td>
-				                <td>文件数量(个)</td>
-				                <td>数据大小(GB)</td>
-				            </tr>
-				            <tr>
-				                <td>矢量数据</td>
-				                <td>3311</td>
-				                <td>2245</td>
-				            </tr>
-				            <tr>
-				                <td>栅格数据</td>
-				                <td>4311</td>
-				                <td>6245</td>
-				            </tr>
-				            <tr>
-				                <td>汇总表格</td>
-				                <td>4311</td>
-				                <td>5245</td>
-				            </tr>
-				            <tr>
-				                <td>权属数据</td>
-				                <td>311</td>
-				                <td>245</td>
-				            </tr>
-				            <tr>
-				                <td>图件数据</td>
-				                <td>3311</td>
-				                <td>1245</td>
-				            </tr>
-				            <tr>
-				                <td>文字报告</td>
-				                <td>1311</td>
-				                <td>2245</td>
-				            </tr>
-				            <tr>
-				                <td>其他数据</td>
-				                <td>311</td>
-				                <td>245</td>
+				                <td>山东</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				              
+				               
 				            </tr>
 				            </tbody>
 						</table>
 					</div>
 					
 				</div>
-				<div style="float: left;width: 70%;height: 100%;">
-					<div id="map_HJCL" style="width: 100%;height: 100%;">
+				<div style="float: left;width: 60%;height: 100%;overflow: auto;">
+					<div style="position: absolute;z-index: 499;margin-left: 5px;margin-top: 5px;">
+							<div class="btn-group" style="margin: 0 0 5px;">
+							  <button id="hjjz_hjdy" class="btn">汇交进展</button>
+							  <button id="kjfb_hjdy" class="btn" style="border-left: solid 1px #FFFFFF;border-right: solid 2px #FFFFFF;">空间分布</button>
+							  <button id="hjdk_hjdy" class="btn">汇交地块</button>
+							</div>
+					</div>
+					
+					<div id="chart_HJCL" style="width: 1077px;height: 720px;margin-top: 27px;padding: 0px;">
 						
 					</div>
+					<div id="map_HJCL" style="width: 100%;height: 100%;margin: 0px;padding: 0px;">
+						
+					</div>
+					
+					
 				</div>
 			</div>
 			
 		</div>
-		<div id="zjcg_cggl" role="tabpanel" class="tab-pane">
+		<div id="zjcg_cggl" role="tabpanel" class="tab-pane" style="width: 100%;height: 100%;">
 			<div id="queryPane_ZJ" class="queryPane_hjdy">
 				<div class="filter_tip" style="margin-left: 15px;">
 					<label for="proQuery_ZJ">省：</label>
@@ -192,83 +201,197 @@
 				
 			</div>
 			<div class="container_hjdy">
-				<div style="float:left;width: 30%;height: 100%;border-right: solid 3.5px #EDEDED;">
+				<div style="float:left;width: 40%;height: 100%;border-right: solid 3.5px #EDEDED;">
 					<div style="height: 100%;width: 100%;">
+						<h3 style="width: 100%;text-align: center;">全国各省七类质检项错误数量统计(单位:个)</h3>
 						<table class="table table-striped">
 							<thead>
-				              <th colspan="3" style="text-align: center;">全国汇交数据质检情况统计</th>
+				             <th>区域</th>
+				             <th>错误总量</th>
+				             
+				             <th>数据完整性</th>
+				             <th>矢量数据</th>
+				             
+				             <th>权属数据</th>
+				             <th>栅格数据</th>
+				             
+				             <th>元数据</th>
+				             <th>数据一致性</th>
+				             
+				             <th>汇交材料一致性</th>				             
 				            </thead>
 				            <tbody>
 				            <tr>
-				                <td>合计项</td>
-				                <td colspan = "2" style="text-align: center;">数量</td>
+				                <td>全国</td>
+				                <td>56786665</td>
+				                
+				                <td>56786</td>
+				                <td>44566</td>
+				                
+				                <td>5432</td>
+				                <td>44321</td>
+				                
+				                <td>7</td>
+				                <td>567</td>
+				                
+				                <td>2212</td>
 				               
-				              </tr>
-				              <tr>
-				                <td>提交质检县个数总计(个):</td>
-				                <td colspan = "2" style="text-align: center;">16</td>
+				            </tr>
+				            <tr>
+				                <td>北京</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
 				               
-				              </tr>
+				            </tr>	
 				            <tr>
-				               	<td>质检次数合计(次):</td>
-				                <td colspan = "2" style="text-align: center;">32</td>
+				                <td>河北</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
 				            </tr>
 				            <tr>
-				                <td>质检通过率:</td>
-				                <td colspan = "2" style="text-align: center;">32%</td>
+				                <td>山东</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
 				            </tr>
-				            <tr>
-				              	<td colspan="3" style="text-align: center;font-family: '微软雅黑';font-weight: bold;font-style: italic;">数据质检统计概况</td>
-				            </tr>
-				            <tr>
-				                <td>质检大类</td>
-				                <td>错误数量(个)</td>
-				                <td>规范描述</td>
-				            </tr>
-				            <tr>
-				                <td>数据完整性</td>
-				                <td>3311</td>
-				                <td>2245</td>
-				            </tr>
-				            <tr>
-				                <td>矢量数据</td>
-				                <td>4311</td>
-				                <td>6245</td>
-				            </tr>
-				            <tr>
-				                <td>权属数据</td>
-				                <td>4311</td>
-				                <td>5245</td>
-				            </tr>
-				            <tr>
-				                <td>栅格数据元数据</td>
-				                <td>311</td>
-				                <td>245</td>
-				            </tr>
-				            <tr>
-				                <td>数据一致性</td>
-				                <td>3311</td>
-				                <td>1245</td>
-				            </tr>
-				            <tr>
-				                <td>汇交材料一致性</td>
-				                <td>1311</td>
-				                <td>2245</td>
-				            </tr>				            
 				            </tbody>
 						</table>
 					</div>
 					
 				</div>
-				<div style="float: left;width: 70%;height: 100%;">
+				<div style="float: left;width: 60%;height: 100%;">
 					<div id="map_ZJCG" style="width: 100%;height: 100%;">
 						
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="hjxq_cggl" role="tabpanel" class="tab-pane">
-			质检成果汇交管理
+		<div id="sjl_cggl" role="tabpanel" class="tab-pane" style="width: 100%;height: 100%;">
+			<div id="queryPane_SJL" class="queryPane_hjdy">
+				<div class="filter_tip" style="margin-left: 15px;">
+					<label for="proQuery_SJL">省：</label>
+					<select id="proQuery_SJL">
+						<option id="1" value="100000">北京市</option>
+					</select>
+					<label for="cityQuery_SJL">市：</label>
+					<select id="cityQuery_SJL">
+						<option id="2" value="100100">北京市</option>
+					</select>
+					<label for="countyQuery_SJL">县：</label>
+					<select id="countyQuery_SJL">
+						<option id="3" value="100105">北京市</option>
+					</select>
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="sTime_hjcl_SJL" >开始时间</label>
+					<input id="sTime_hjcl_SJL"  type="text" value="2016/5/25" />
+					<label for="tTime_hjcl_SJL" >结束时间</label>
+					<input id="tTime_hjcl_SJL"  type="text" value="2016/6/25" />
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="indQuery_SJL">统计指标</label>
+					<select id="indQuery_SJL">
+						<option value="100105">汇交数量</option>
+						<option value="100105">汇交次数</option>
+					</select>
+				</div>
+				
+			</div>
+			<div class="container_hjdy">
+				<div style="float:left;width: 40%;height: 100%;border-right: solid 3.5px #EDEDED;">
+					<div style="height: 100%;width: 100%;">
+						<h3 style="width: 100%;text-align: center;">全国各省汇交成果数据量情况(单位:GB)</h3>
+						<table class="table table-striped">
+							<thead>
+				             <th>区域</th>
+				             <th>数据总量</th>
+				             <th>矢量数据</th>
+				             <th>栅格数据</th>
+				             <th>权属数据</th>
+				             <th>图件数据</th>
+				             <th>汇总表格</th>
+				             <th>文字报告</th>
+				             <th>其他资料</th>
+				            </thead>
+				            <tbody>
+				            <tr>
+				                <td>全国</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
+				            </tr>
+				            <tr>
+				                <td>北京</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
+				            </tr>	
+				            <tr>
+				                <td>河北</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
+				            </tr>
+				            <tr>
+				                <td>山东</td>
+				                <td>56786665</td>
+				                <td>56786</td>
+				                <td>44566</td>
+				                <td>5432</td>
+				                <td>44321</td>
+				                <td>7</td>
+				                <td>567</td>
+				                <td>2212</td>
+				               
+				            </tr>
+				            </tbody>
+						</table>
+					</div>
+					
+				</div>
+				<div style="float: left;width: 60%;height: 100%;">
+					<div id = "map_SJL" style="width: 100%;height: 100%;">
+						
+					</div>
+				</div>
+			</div>
 			
 		</div>
 	</div>

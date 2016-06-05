@@ -1,5 +1,8 @@
 (function($){
 	
+	var hjdwMap = null;
+	var zjcgMap = null;
+	var sjlMap = null;
 	$.manageResult = function(){
 		console.log("进入成果管理模块");
 		resize();
@@ -7,50 +10,89 @@
 		initMap();
 	}
 	var baseUrl = "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer";
-	var dynamicUrl1 = "http://localhost:6080/arcgis/rest/services/ArcGIS10_2%E5%85%A8%E5%9B%BD%E5%9B%BE/MapServer";
-	var dynamicUrl = "http://192.168.44.231:6080/arcgis/rest/services/ChinaSDE/MapServer";
+	var dynamicUrl = "http://localhost:6080/arcgis/rest/services/ArcGIS10_2%E5%85%A8%E5%9B%BD%E5%9B%BE/MapServer";
+	var dynamicUrl1 = "http://192.168.44.231:6080/arcgis/rest/services/ChinaSDE/MapServer";
+	var dynamicLayerUrl = "http://ncportal.esrichina.com.cn/arcgis/rest/services/chinaBase/MapServer";
 	function initMap(){
-		
-		require(["esri/map","esri/SpatialReference","esri/geometry/Extent","esri/layers/ArcGISTiledMapServiceLayer",
-		"esri/layers/ArcGISDynamicMapServiceLayer"
-		], function(Map, SpatialReference, 
+		require([
+			"esri/map",
+			"esri/SpatialReference",
+			"esri/geometry/Extent",
+			"esri/layers/ArcGISTiledMapServiceLayer",
+			"esri/layers/ArcGISDynamicMapServiceLayer",			
+			"dojo/domReady!"
+		], function(Map, SpatialReference,
 			Extent, AGSTMSLayer,
 			AGSDMSLayer
-		){			
-			var extent = new Extent(
-				70.486496,
-				28.91798,
-				135.588549,
-				58.8278094, 
-				new SpatialReference('4326'));
-			var map = new Map('map_HJCL',{
-				//center:[89,35],
-				//zoom:5
-				extent:extent
+		){
+			
+			var extent = new Extent({
+				xmin:46424797.08225821,
+				ymin:47907.74683072558,
+				xmax:57128427.02708517,
+				ymax:7454350.039549194, 
+				spatialReference:{wkid:3857}});
+			hjdwMap = new Map('map_HJCL',{
+				center:[79,42],
+				zoom:4,
+				//extent:extent,
+				slider:false
 			});
-			//var blayer = new AGSTMSLayer(baseUrl);
-			//map.addLayer(blayer);
-			var dlayer = new AGSDMSLayer(dynamicUrl);
-			dlayer.setVisibleLayers([9]);
-			map.addLayer(dlayer);
-			console.log('map',map);
-			map.on('extent-change', function(evt){
-				console.log(evt.extent);
-			})
+			hjdwMap.isScrollWheelZoom =false;
+			hjdwMap.disableScrollWheelZoom();
+			alert(hjdwMap.isScrollWheelZoom);
+			zjcgMap = new Map('map_ZJCG',{
+				center:[79,42],
+				zoom:4,
+				//extent:extent,
+				slider:false
+			});
+			zjcgMap.disableScrollWheelZoom();
+			sjlMap = new Map('map_SJL',{
+				center:[79,42],
+				zoom:4,
+				//extent:extent,
+				slider:false
+			});
+			sjlMap.disableScrollWheelZoom();
+			
+			var blayer_1 = new AGSTMSLayer(baseUrl);
+			var blayer_2 = new AGSTMSLayer(baseUrl);
+			var blayer_3 = new AGSTMSLayer(baseUrl);
+			hjdwMap.addLayer(blayer_1);
+			var dlayer_1 = new AGSDMSLayer(dynamicLayerUrl);
+			var dlayer_2 = new AGSDMSLayer(dynamicLayerUrl);
+			var dlayer_3 = new AGSDMSLayer(dynamicLayerUrl);
+			//dlayer.setVisibleLayers([9]);
+			hjdwMap.addLayer(dlayer_1);
+			
+			zjcgMap.addLayer(blayer_2);
+			sjlMap.addLayer(blayer_3);
+			zjcgMap.addLayer(dlayer_2);
+			sjlMap.addLayer(dlayer_3);
+			
+			
 		});
-		
+	
+				
 	}
+	//汇交进展
+	$("hjjz_hjdy").on('click', function(){
+		
+	});
+	//空间分布
+	$("kjfb_hjdy").on('click', function(){
+		$("map_HJCL").css('margin-top','-747px');
+	});
+	//汇交地块
+	$("hjdk_hjdy").on('click', function(){
+		
+	});
 	
 	function resize(){
 		
-		var heightL1 = (document.body.clientHeight - 104)+"px";
-		var widthL1 = (document.body.clientWidth)+"px";
 				
-		$("#paneLevel1").height(heightL1);
-		$("#paneLevel1").width(widthL1);
-		$("#paneLevel1").css({"padding":'0px', margin:'0px'});
-		
-		var he1 = ($("#paneLevel1").height() - 104)+"px";
+		var he1 = ($("#paneLevel1").height() - $(".hjgl_TabPane").height()-10)+"px";
 		var wid1 = ($("#paneLevel1").width()*0.95)+"px";
 		$("#tabContentDiv").height(he1);
 		$("#tabContentDiv").width(wid1);
@@ -63,9 +105,10 @@
 		renderFirstProChart();
 		renderHJCGLProChart();
 		renderHJCGRProChart();
+		
+		renderBiliQuan();
 	}
-	
-	
+		
 	//七大类文件汇交情况
 	function renderHJCGLProChart(){
 		
@@ -76,12 +119,7 @@
 		       trigger: 'axis'
 		        
 		    },
-		    grid:{
-		    	x :5,
-		    	x2:30,
-		    	y:34,
-		    	y2:34
-		    },
+		   
 		    toolbox: {
 		        show : true,
 		        orient : 'vertical',
@@ -441,6 +479,78 @@
 		
 		myChart.setOption(option);
 			
+	}
+	
+	//汇交单元渲染
+	function renderBiliQuan(){
+		var myChart = echarts.init(document.getElementById("chart_HJCL"),"inforgraphic");
+		var option = {
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            magicType: {show: true, type: ['line', 'bar']},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    legend: {
+		        data:['汇交单元提交数','汇交单元通过数','通过率','汇交率']
+		    },
+		    xAxis : [
+		        {
+		            type : 'category',
+		            data : ['2016-1月','2016-2月','2016-3月','2016-4月','2016-5月','2016-6月','2016-7月','2016-8月','2016-9月','2016-10月','2016-11月','2016-12月']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            name : '数量',
+		            axisLabel : {
+		                formatter: '{value} 个'
+		            }
+		        },
+		        {
+		            type : 'value',
+		            name : '百分比',
+		            axisLabel : {
+		                formatter: '{value} %'
+		            }
+		        }
+		    ],
+		    series : [
+		
+		        {
+		            name:'汇交单元提交数',
+		            type:'bar',
+		            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 13.6, 12.2, 32.6, 20.0, 6.4, 3.3]
+		        },
+		        {
+		            name:'汇交单元通过数',
+		            type:'bar',
+		            data:[2.6, 5.9, 90, 29.4, 22.7, 40.7, 75.6, 82.2, 48.7, 18.8, 6.0, 2.3]
+		        },
+		        {
+		            name:'通过率',
+		            type:'line',
+		            yAxisIndex: 1,
+		            data:[2.0, 2.2, 33.3, 24.5, 16.3, 15.2, 30.3, 43.4, 23.0, 16.5, 12.0, 6.2]
+		        },
+		        {
+		            name:'汇交率',
+		            type:'line',
+		            yAxisIndex: 1,
+		            data:[2.0, 3.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 19.5, 32.0, 26.2]
+		        }
+		    ]
+		};
+		myChart.setOption(option);
 	}
 	
 })(jQuery);

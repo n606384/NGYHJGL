@@ -1367,7 +1367,7 @@
 		var sjb = res.xxxx.sjb;
 		var sjwj = res.xxxx.hjsjwj;
 		//保存修改的唯一值
-		hjdwFormData.hjdwbm = hjdw.hjdwbm;	
+		hjdwFormData.hjdwbm = hjdw.hjdwbm;
 		
 		hjryFormData.hjrybm = hjry.hjrybm;
 		
