@@ -19,7 +19,7 @@
 			"esri/SpatialReference",
 			"esri/geometry/Extent",
 			"esri/layers/ArcGISTiledMapServiceLayer",
-			"esri/layers/ArcGISDynamicMapServiceLayer",			
+			"esri/layers/ArcGISDynamicMapServiceLayer",
 			"dojo/domReady!"
 		], function(Map, SpatialReference,
 			Extent, AGSTMSLayer,
@@ -40,7 +40,7 @@
 			});
 			hjdwMap.isScrollWheelZoom =false;
 			hjdwMap.disableScrollWheelZoom();
-			alert(hjdwMap.isScrollWheelZoom);
+			
 			zjcgMap = new Map('map_ZJCG',{
 				center:[79,42],
 				zoom:4,

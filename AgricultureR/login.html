@@ -46,9 +46,9 @@
 				async:true,
 				data:$('#login').serialize(),
 				dataType:"json",
-				success:function(res){	
+				success:function(res){
 					console.log("进入登录页面",res);
-					if(res.login === "success"){
+					if(res.login == "success"){
 						app.token = res.token;
 						app.serId = res.id;
 						console.log(app.token);
@@ -56,13 +56,20 @@
 						//window.location.href = "GetJson.html?token="+app.token;
 						$.ajax({
 							type:"post",
-							url:"http://192.168.44.232:8080/rest/hjgl/getSJBXXXX?token=ddd",
+							url:"http://127.0.0.1:8080/cggl/getHJDYXXByTime?token=ddd",
+							//url:"http://192.168.44.232:8080/rest/cggl/getHJDYXXByTime?token=ddd",
+							dataType:'json',
 							async:true,
 							data:{
-								"sjbbm":"70"
+								"start":"2016-1-1",
+								"end":"2016-7-1",
+								"bm":"0"
 							},
 							success:function(data){
 								console.log("提交结果",data);
+							},
+							error:function(err){
+								console.log("报错了",err);
 							}
 						});
 					}else if(res.login === "error"){

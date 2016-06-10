@@ -1,4 +1,7 @@
-$(function(){	
+jQuery.ajaxSetup({
+	cache:true
+});
+$(function(){
 	
 	function getParamFromHref(strName){
 		var urlHref = window.document.location.href;

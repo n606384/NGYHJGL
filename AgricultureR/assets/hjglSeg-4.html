@@ -1,14 +1,93 @@
-<div style="width: 100%;height: 100%;margin: 0px auto;">
-	<div class="cgglUpContainer">
-		<div class="cgglTLContainer">
-			左上角放只指标选择器
+<div style="width: 95%;height: 100%;margin: 5px auto;">
+	<div id="queryPane" class="queryPane_sjfx">
+		<div class="filter_tip" style="margin-left: 15px;">
+			<label for="proQuery">省：</label>
+			<select id="proQuery">
+				<option id="1" value="100000">北京市</option>
+			</select>
+			<label for="cityQuery">市：</label>
+			<select id="cityQuery">
+				<option id="2" value="100100">北京市</option>
+			</select>
+			<label for="countyQuery">县：</label>
+			<select id="countyQuery">
+				<option id="3" value="100105">北京市</option>
+			</select>
+		</div>&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="filter_tip">
+			<label for="sTime_hjcl" >开始时间</label>
+			<input id="sTime_hjcl"  type="text" value="2016/5/25" />
+			<label for="tTime_hjcl" >结束时间</label>
+			<input id="tTime_hjcl"  type="text" value="2016/6/25" />
+		</div>&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="filter_tip">
+			<label for="sTime_hjcl">统计指标</label>
+			<select id="indQuery">
+				<option value="100105">汇交数量</option>
+				<option value="100105">汇交次数</option>
+			</select>
 		</div>
-		<div class="cgglTRContainer">
-			右上角地图展示
+		
+	</div>
+	
+	<ul class="nav nav-tabs sjfx_TabPane" role="tablist">
+	    <li role="presentation" class="active"><a href="#dkfx_sjfx" aria-controls="dkfx_sjfx" role="tab" data-toggle="tab">按地块分析</a></li>
+	    <li role="presentation"><a href="#cbgyt_sjfx" aria-controls="cbgyt_sjfx" role="tab" data-toggle="tab">按承包地用途</a></li>
+	    <li role="presentation"><a href="#fcbd_sjfx" aria-controls="fcbd_sjfx" role="tab" data-toggle="tab">按非承包地类别</a></li>
+	     <li role="presentation"><a href="#sfnt_sjfx" aria-controls="sfnt_sjfx" role="tab" data-toggle="tab">按是否基本农田</a></li>
+	     <li role="presentation"><a href="#qzxx_sjfx" aria-controls="qzxx_sjfx" role="tab" data-toggle="tab">按权证信息</a></li>
+	     <li role="presentation"><a href="#cbf_sjfx" aria-controls="cbf_sjfx" role="tab" data-toggle="tab">按承包方</a></li>
+	     <li role="presentation"><a href="#qtfx_sjfx" aria-controls="qtfx_sjfx" role="tab" data-toggle="tab">其他分析</a></li>
+	</ul>
+	<div id="tabContents_sjfx" class="tab-content">
+		
+		<div id="dkfx_sjfx" role="tabpanel" class="tab-pane fade in active" style="width: 100%;height: 100%;">
+			
+			
+		</div>
+		<div id="cbgyt_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">			
+			
+			
+		</div>
+		<div id="fcbd_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
+			
+		</div>
+		<div id="sfnt_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
+
+		</div>
+		<div id="qzxx_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
+
+			
+		</div>
+		<div id="cbf_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
+
+			
+		</div>
+		<div id="qtfx_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
+						
 		</div>
 	</div>
 	
-	<div class="cgglBotContainer">
-		下方是上级汇总简要信息
-	</div>
+	
+	
+	
+	
+	
 </div>
+<!-- Modal -->
+<div class="modal fade" id="dialogModalSeg_4" tabindex="-1" role="dialog" aria-labelledby="modalTitleSeg_3" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="modalTitleSeg_4" class="modal-title"></h4>
+      </div>
+      <div id="modalContentSeg_4" class="modal-body">
+         
+      </div>
+      <div id="modalFooterSeg_4" class="modal-footer">         
+        <button type="button" class="btn btn-default" data-dismiss="modal">确  定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
