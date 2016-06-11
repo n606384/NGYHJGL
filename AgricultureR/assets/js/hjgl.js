@@ -340,7 +340,13 @@ $(function(){
 		});
 	})
 	
-	
+	function resize(){
+		var width = (document.body.clientWidth)+"px";
+		var height = (document.body.clientHeight - 114)+"px";
+		$("#paneLevel1").height(height);
+		$("#paneLevel1").width(width);
+	}
+	$(window).resize = resize();
 	function initHJGL(){
 		
 		$("#paneLevel1").empty();

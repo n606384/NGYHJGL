@@ -777,7 +777,10 @@ button:hover{
 	height: -moz-calc(100% - 45px);
 	height: -webkit-calc(100% - 45px);
 }
-
+.container_hjdy table thead th{
+	text-align: center;
+	vertical-align: middle;
+}
 #tabContents_sjfx{
 	width: 100%;
 	height: calc(100% - 90px);
@@ -794,5 +797,13 @@ button:hover{
 .sjfx_TabPane li[class = 'active'] a:focus{
 	background-color: #F1A01B;
 	color: white;
+}
+.sjfx_r_pane{
+	border-bottom: solid 3.5px #229A56;
+	float: left;
+}
+.glyphicon:hover{
+	cursor: pointer;
+	font-weight: 800;
 }
 

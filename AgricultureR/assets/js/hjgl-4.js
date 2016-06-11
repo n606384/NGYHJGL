@@ -5,8 +5,17 @@ jQuery.ajaxSetup({
 	var appSJFX = {};
 	$.managerResult = function(){
 		console.log("进入数据分析页面");
+		initResize();
 		initPage();		
 	}
+	
+	function initResize(){
+		var width = $("#paneLevel1").width()*0.95;
+		var height = $("#paneLevel1").height() - 10;
+		$("#hjglseg-4").height(height);
+		$("#hjglseg-4").width(width);
+	}
+	$(window).resize = initResize();
 	
 	function initPage(){
 		console.log("数据分析页面初始化中...");
@@ -36,6 +45,7 @@ jQuery.ajaxSetup({
 		});
 		$(".sjfx_TabPane li:eq(2) a").on('click', function(e){
 			e.preventDefault();
+			
 			appSJFX.tabDivId = "fcbd_sjfx";
 			$.getScript("assets/js/sjfx-3.js").done(function(){
 				var dd = $.fcbdAnalyst(appSJFX);
