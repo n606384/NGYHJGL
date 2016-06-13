@@ -5,6 +5,7 @@ $(function(){
 	var shengCode,shiCode;
 	var province,city,county;
 	var userTree;
+	
 	function resize(){
 		var height = (document.body.clientHeight - 324)+"px";
 		$("#container").height(height);
@@ -96,7 +97,7 @@ $(function(){
 						}).on('onSetSelectValue', function(e,keyword,data){
 							console.log('onSetSelectValue: ', keyword, data);						
 							app.xianName = "";
-							app.xianName = keyword.key;
+							app.proName = keyword.key;
 							var selValue = keyword.id;
 							shengCode = keyword.id;				
 							shiSuggest.bsSuggest('destroy');
@@ -131,7 +132,7 @@ $(function(){
 						        data: shiAttr
 							}).on('onSetSelectValue', function(e,keyword,data){
 								console.log('xianAttr onSetSelectValue: ', keyword, data);
-								app.xianName += keyword.key;
+								app.cityName = keyword.key;
 								var selValue = keyword.id;
 								xianSuggest.bsSuggest('destroy');
 								
@@ -161,24 +162,13 @@ $(function(){
 									indexId: 1,  //data.value 的第几个数据，作为input输入框的内容
 							        indexKey: 2, //data.value 的第几个数据，作为input输入框的内容
 							        data: xianAttr
-								}).on('onSetSelectValue', function(e,keyword,data){
-									app.xianName += keyword.key;
+								}).on('onSetSelectValue', function(e,keyword,data){									
+									app.xianName =app.proName + app.cityName + keyword.key;
 									app.xianbm = keyword.id;
 									//console.log("app.xianbm",app);
-									
-									$("#hjdwxz").val("");		
-									$("#hjdwmc").val("");
-									$("#hjdwdz").val("");
-									$("#hjrxm").val("");
-									$("#lxdh").val("");
-									$("#lxyx").val("");
-									$("#txdz").val("");
-									
-									fullfillDropMenu();
 									$("#countySpan").empty();
-									$("#countySpan").html(app.xianName);
-									
-									
+									fullfillDropMenu();									
+									$("#countySpan").html(app.xianName);								
 								});
 									
 							});
@@ -203,6 +193,7 @@ $(function(){
 		//console.log("汇交单位性质",$(this)[0].dataset);
 		
 		$("#hjdwxz").val($(this)[0].dataset.name);
+		$('#hjryxx').bootstrapValidator('updateStatus','hjdwxz','VALID');
 				
 	});
 	
@@ -281,7 +272,19 @@ $(function(){
    });
 	//保存
 	$("#saveBtnHJYY").on('click',function(){
-		
+		console.log("sssssssssssssssssssssssssssssssssssss : ",$("#xianIpt").val());
+		if($("#xianIpt").val()==""){
+			console.log("警告信息：");
+			var title="警告信息";
+			var content="请填写区县信息！";
+			var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";		
+			$("#modalTitle").html(title);
+			$("#modalContent").html(content);
+			$("#modalFooter").html(footer);			
+			$("#dialogModal").modal('show');
+			$("#xianIpt").removeAttr("disabled");
+			return false;			
+		}
 		$('#hjryxx').bootstrapValidator('validate');
 		//console.log(s);
 		var formdata={};
@@ -307,18 +310,19 @@ $(function(){
 		
 		
 		/********判断信息是否有空***********/
-		if(hjdwxzFD==""||hjdwdzFD==""||hjdwmcFD==""||hjrxmFD==""||lxdhFD==""||lxyxFD==""||txdzFD==""){
-			var title="警告信息";
-			var content="录入信息不完整，请补全其他信息！";
-			var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";
-			
-			$("#modalTitle").html(title);
-			$("#modalContent").html(content);
-			$("#modalFooter").html(footer);
-			
-			$("#dialogModal").modal('show');
-			return;
-		}
+//		if(hjdwxzFD==""||hjdwdzFD==""||hjdwmcFD==""||hjrxmFD==""||lxdhFD==""||lxyxFD==""||txdzFD==""){
+//			var title="警告信息";
+//			var content="录入信息不完整，请补全其他信息！";
+//			var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";
+//			
+//			$("#modalTitle").html(title);
+//			$("#modalContent").html(content);
+//			$("#modalFooter").html(footer);
+//			
+//			$("#dialogModal").modal('show');
+//			return;
+//		}
+		
 		
 		/***判断增加和修改的状态****/
 		if(userTree){

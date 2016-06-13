@@ -10,6 +10,7 @@
 	var formData= {}, formUpdate = {};
 	var sjbztFD = "1008002";
 	function init(){
+		//SJBContent();
 		$("#countySpanSJB").html(app.xianName);
 		//事件绑定
 		$("#updateBtnSJB").on('click', function(){
@@ -26,7 +27,6 @@
 			var id = dataset.id;
 			var name = dataset.name;
 			$("#sjblx").val(name);
-			$('#sjbForm').bootstrapValidator('validate');
 		});
 		$("#hjsjbjzList li").on('click', function(e){
 			
@@ -34,7 +34,6 @@
 			var id = dataset.id;
 			var name = dataset.name;
 			$("#hjsjbjz").val(name);
-			$('#sjbForm').bootstrapValidator('validate');
 		});
 		
 		//表单验证
@@ -123,13 +122,10 @@
         			var name = attPath[attPath.length - 2];
         			console.log(attPath);
         			$("#sjbmc").val(name);
-        			$("#ccwz").val(filePath);
-        			
-        			$("#sjbdx").val(data.result.allNum);
-        			$("#wjzs").val(data.result.allSize);
-        			
-        			$('#sjbForm').bootstrapValidator('validate');
-        			
+        			$("#ccwz").val(filePath);       			
+        			$("#sjbdx").val(((data.result.allSize)/1024/1024/1024).toFixed(3));
+        			$("#wjzs").val(data.result.allNum);       			
+        			$('#sjbForm').bootstrapValidator('validate');       			
         		}
         		
         	});
@@ -156,6 +152,7 @@
 			console.log("提交数据包formData", formData);			
 			app.sjbData = formData;
 			if(app.sjbbm){
+				
 				$.ajax({
 					type:"post",
 					url:app.postUrls.updateSJBXX,
@@ -314,8 +311,9 @@
 		var now = new Date();
 		var year = now.getFullYear();
 		var month = now.getMonth()+1;
-		var day = now.getDay();
+		var day = now.getDate();
 		var tjsj = year+"-"+month+"-"+day;
+		
 		
 		var sjbztFlag = $('input[name="sjbsc"]:checked').val();
 		if(parseInt(sjbztFlag) == 0){
@@ -359,6 +357,43 @@
 		if(sjbmcFD==""||sjblxFD==""||hjsjbjzFD==""||sjbdxFD==""||wjzsFD==""||ccwzFD==""){
 			return true;
 		}else return false;
-	}
+	}			
 	
+// 	function SJBContent(){
+// 		console.log("数据包编码：",app.sjbbm);
+//// 		var sjbname = null;
+//// 		var sjbtype = null;
+//// 		var hjjztype = null;
+//// 		var sjbsize = null;
+//// 		var wjcount = null;
+//// 		var cclocation = null;
+// 		$.ajax({
+// 			type:"post",
+// 			url:app.postUrls.getSJBXXXX,
+// 			async:true,
+// 			dataType:'json',
+// 			data:{
+// 				"sjbbm":app.sjbbm,
+// 			},
+// 			success:function(res){
+// 				console.log('汇交数据包详细信息seg-2自动填充：',res);
+// 				var sjbname = res.sjb.sjbmc;
+// 				var sjbtype = res.sjb.sjblx;
+// 				var hjjztype = res.sjb.hjsjbjz;
+// 				var sjbsize = res.sjb.sjbdx;
+// 				var wjcount = res.sjb.wjzs;
+// 				var cclocation = res.sjb.ccwz;
+// 				$("#sjbmc").html(sjbname);
+// 				$("#sjblx").html(sjbtype);
+// 				$("#hjsjbjz").html(hjjztype);
+// 				$("#sjbdx").html(sjbsize);
+// 				$("#wjzs").html(wjcount);
+// 				$("#ccwz").html(cclocation)
+// 			},
+// 			error:function(err){
+// 				console.log("汇交数据包详细信息seg-2自动填充错误：",err);
+// 			}			
+// 			
+// 		});
+// 	}
 })(jQuery)
