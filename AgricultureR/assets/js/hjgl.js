@@ -237,7 +237,13 @@ $(function(){
 			//50、查询汇交人员信息接口
 			"hjryDetailUrl":"http://192.168.44.232:8080/rest/hjgl/getHJRYXX" +urlTokenParm,
 			//51、修改汇交人员信息接口
-			"hjryUpdateUrl":"http://192.168.44.232:8080/rest/hjgl/updateHJRYXX" +urlTokenParm
+			"hjryUpdateUrl":"http://192.168.44.232:8080/rest/hjgl/updateHJRYXX" +urlTokenParm,
+			//52、获取全国汇交数据情况信息接口
+			"getHJZTQKUrl":"http://192.168.44.232:8080/rest/cggl/getHJZTQK" +urlTokenParm,
+			//53、获取全国质检数据情况信息接口
+			"getZJZTQKUrl":"http://192.168.44.232:8080/rest/cggl/getZJZTQK" +urlTokenParm,
+			//54、获取全国分省宏观情况信息接口
+			"getQGHGSJUrl":"http://192.168.44.232:8080/rest/cggl/getQGHGSJ" +urlTokenParm
 			
 		};
 	initHJGL();

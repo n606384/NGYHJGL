@@ -353,6 +353,20 @@ form ul li:hover{
 	text-align: center;
 	
 }
+/*汇交单元选项卡中样式*/
+.districtFilter_hjdyxxk{
+	float: left;
+	right: 0px;
+	width: 40%;
+	height: 100%;
+	text-align: center;
+}
+.col-sm-3_hjdyxxk{
+	width:45%;
+	float: left;
+	margin-left: 10px;
+}
+
 
 .countySpan{
 	text-align: center;	

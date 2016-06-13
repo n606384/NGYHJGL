@@ -1,7 +1,7 @@
 <div style="width: 95%;height: 100%;margin: 5px auto;">
 	<ul class="nav nav-tabs hjgl_TabPane" role="tablist">
 	    <li role="presentation" class="active"><a href="#first_cggl" aria-controls="first_cggl" role="tab" data-toggle="tab">总体情况</a></li>
-	    <li role="presentation"><a href="#hjdy_cggl" aria-controls="hjdy_cggl" role="tab" data-toggle="tab">汇交单元</a></li>
+	    <li role="presentation" id="hjdy_change"><a href="#hjdy_cggl" aria-controls="hjdy_cggl" role="tab" data-toggle="tab">汇交单元</a></li>
 	    <li role="presentation"><a href="#zjcg_cggl" aria-controls="zjcg_cggl" role="tab" data-toggle="tab">质检成果</a></li>
 	     <li role="presentation"><a href="#sjl_cggl" aria-controls="sjl_cggl" role="tab" data-toggle="tab">数据量统计</a></li>
 	</ul>
@@ -11,13 +11,13 @@
 			<div class="cgglUpContainer">
 				<div style="width: 50%;height: 100%;margin: auto;border-right: solid 3.5px #93BA47;">
 					<div style="margin-left: 5%; width:30%; height: 100%;">
-					<span>全国已汇交县数量：<em>16</em>个</span>
+					<span>全国已汇交县数量：<em class="qgyhjxsl"></em>个</span>
 					<br />
-					<span>全国总汇交次数：<em>32</em>次</span>
+					<span>全国总汇交次数：<em class="qgzhjcs"></em>次</span>
 					<br />
-					<span>汇交成功率：<em>50%</em></span>
+					<span>汇交成功率：<em class="hjcgl"></em></span>
 					<br />
-					<span>总数据量大小：<em>4000</em>GB</span>
+					<span>总数据量大小：<em class="zsjldx"></em>GB</span>
 					<br />
 					</div>
 					<div id="hjcgl_cggl" style="float:left;width: 65%;height: 100%;">
@@ -27,13 +27,13 @@
 				<div  style="width: 50%;height: 100%;border-right: solid 3.5px #93BA47;">			
 					
 					<div style="margin-left:5%; width: 30%; height: 100%;">
-					<span>数据质检次数：<em>46</em>次</span>
+					<span>数据质检次数：<em class="sjzjcs">46</em>次</span>
 					<br />
-					<span>数据质检通过率：<em>72%</em>次</span>
+					<span>数据质检通过率：<em class="sjzjtgl">72%</em></span>
 					<br />
-					<span>质检错误数总计：<em>210</em>个</span>
+					<span>质检错误数总计：<em class="zjcwzj">210</em>个</span>
 					<br />
-					<span>累计质检数据量：<em>90321</em>GB</span>
+					<span>累计质检数据量：<em class="ljzjsjl">90321</em>GB</span>
 					<br />
 					</div>
 					<div id="zjcgl_cggl" style="width: 65%;height: 100%;">
@@ -49,37 +49,78 @@
 		</div>
 		<div id="hjdy_cggl" role="tabpanel" class="tab-pane" style="width: 100%;height: 100%;">
 			<div id="queryPane" class="queryPane_hjdy">
-				<div class="filter_tip" style="margin-left: 15px;">
-					<label for="proQuery">省：</label>
-					<select id="proQuery">
-						<option id="1" value="100000">北京市</option>
-					</select>
-					<label for="cityQuery">市：</label>
-					<select id="cityQuery">
-						<option id="2" value="100100">北京市</option>
-					</select>
-					<label for="countyQuery">县：</label>
-					<select id="countyQuery">
-						<option id="3" value="100105">北京市</option>
-					</select>
+				
+				<div class="districtFilter_hjdyxxk row">
+				
+					<div class="col-sm-3_hjdyxxk">
+						<div class="input-group districtFilterDiv">			
+							<span class="input-group-addon">省：</span>
+		                    <input type="text" class="form-control form-horizontal" id="shengIpt_hjdyxxk" autocomplete="off">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="">
+		                            <span class="caret"></span>
+		                        </button>
+		                        <ul id="shengDropdownMenu_hjdyxxk" class="dropdown-menu dropdown-menu-right dis-dropdwown" role="menu"></ul>
+		                    </div>
+		                    <!-- /btn-group -->
+		                </div>
+					</div>
+					
+					<div class="col-sm-3_hjdyxxk">
+						<div class="input-group districtFilterDiv">			
+							<span class="input-group-addon">市：</span>
+		                    <input type="text" class="form-control form-horizontal" id="shiIpt_hjdyxxk" autocomplete="off">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="">
+		                            <span class="caret"></span>
+		                        </button>
+		                        <ul id="shiDropdownMenu_hjdyxxk" class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+		                    </div>
+		                    <!-- /btn-group -->
+		                </div>
+					</div>
 				</div>&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="filter_tip">
-					<label for="sTime_hjcl" >开始时间</label>
-					<input id="sTime_hjcl"  type="text" value="2016/5/25" />
-					<label for="tTime_hjcl" >结束时间</label>
-					<input id="tTime_hjcl"  type="text" value="2016/6/25" />
+				
+				<div class="filter_tip" style="float:left;width:25%">
+					
+					<div class="input-group" style="width: 90%;margin-top: 10px;margin-left: 20px;float: left;">
+					  <span class="input-group-addon">时间范围</span>
+					  <input id="startTimeSet" type="text" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<!--<div class="input-group" style="width: 45%;margin-top: 10px;margin-left: 20px;float: left;">
+					  <span class="input-group-addon" id="basic-addon1">结束时间</span>
+					  <input type="text" class="form-control" aria-describedby="basic-addon1" readonly>
+					</div>-->
 				</div>&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="filter_tip">
-					<label for="sTime_hjcl">统计指标</label>
+				<div class="filter_tip" style="margin-top:5px;">
+					<!--<label for="sTime_hjcl">统计指标</label>
 					<select id="indQuery">
 						<option value="100105">汇交数量</option>
-						<option value="100105">汇交次数</option>
-					</select>
+						<option value="100106">汇交次数</option>
+						<option value="100107">汇交地块</option>
+					</select>-->
+					
+					<div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    统计指数
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li class="hjslbqy"><a href="#">汇交数量</a></li>
+					    <li class="hjcsbqy"><a href="#">汇交次数</a></li>
+					    <li class="hjdkbqy"><a href="#">汇交地块</a></li>
+					  </ul>
+					</div>
+					
 				</div>
+				
+				<div style="float: left;margin-top:10px;margin-left:10px;">
+						<button class="btn btn-default" type="submit" id="StartStatistics">开始统计</button>
+					</div>
 				
 			</div>
 			<div class="container_hjdy">
-				<div style="float:left;width: 40%;height: 100%;border-right: solid 3.5px #EDEDED;">
+				<div  class="container_hjdy_left" style="float:left;width: 40%;height: 100%;border-right: solid 3.5px #EDEDED;">
 					<div style="height: 100%;width: 100%;">
 						<h3 style="width: 100%;text-align: center;">全国各省汇交业务情况统计(单位:个)</h3>
 						<table class="table table-striped">
@@ -92,7 +133,6 @@
 				             <th>汇交率(%)</th>
 				             <th>汇交次数(次)</th>
 				             <th>地块数量(块)</th>
-				             			             
 				            </thead>
 				            <tbody>
 				            <tr>
@@ -109,7 +149,7 @@
 				            </tr>
 				            <tr>
 				                <td>北京</td>
-				                <td>56786</td>
+				                <td>56786665</td>
 				                <td>56786</td>
 				                <td>44566</td>
 				                <td>5432</td>
@@ -148,7 +188,7 @@
 					</div>
 					
 				</div>
-				<div style="float: left;width: 60%;height: 100%;overflow: auto;">
+				<div  class="container_hjdy_right" style="float: left;width: 60%;height: 100%;overflow: auto;">
 					<div style="position: absolute;z-index: 499;margin-left: 5px;margin-top: 5px;">
 							<div class="btn-group" style="margin: 0 0 5px;">
 							  <button id="hjjz_hjdy" class="btn">汇交进展</button>
@@ -156,15 +196,24 @@
 							  <button id="hjdk_hjdy" class="btn">汇交地块</button>
 							</div>
 					</div>
-					
 					<div id="chart_HJCL" style="width: 1077px;height: 720px;margin-top: 27px;padding: 0px;">
-						
+					</div>
+					<div id="chart_HJCL2" style="width: 1077px;height: 720px;margin-top: 27px;padding: 0px;">
 					</div>
 					<div id="map_HJCL" style="width: 100%;height: 100%;margin: 0px;padding: 0px;">
-						
 					</div>
-					
-					
+				</div>
+				<div  class="container_hjdy_right1" style="float: left;width: 60%;height: 100%;overflow: auto;">
+					<div id="chart_HJCL_CS" style="width: 1077px;height: 720px;margin-top: 27px;padding: 0px;">
+					</div>
+					<div id="map_HJCL_CS" style="width: 100%;height: 100%;margin: 0px;padding: 0px;">
+					</div>
+				</div>
+				<div  class="container_hjdy_right2" style="float: left;width: 60%;height: 100%;overflow: auto;">
+					<div id="chart_HJCL_DK" style="width: 1077px;height: 720px;margin-top: 27px;padding: 0px;">
+					</div>
+					<div id="map_HJCL_DK" style="width: 100%;height: 100%;margin: 0px;padding: 0px;">
+					</div>
 				</div>
 			</div>
 			
