@@ -19,21 +19,24 @@
 	function initialize(){
 	
 		ajaxXTYHRequest();		
+		
+		xtrzNum();		
+		hjdwDetail();
+		hjryDetail();
+		
+		
 		$("#addUser").on('click',addUser);
 		
 		$("#delUser").on('click',delUser);
-		$("#updateUser").on('click',updateUser);		
-		$("#YHGL-button").on('click',yhglVisibility);
-		$("#XTRZ-button").on('click',xtrzVisibility);		
-		$("#HJDW-button").on('click',hjdwVisibility);
-		$("#HJRY-button").on('click',hjryVisibility);
-		$("#XTRZ-button").on('click',xtrzNum);
+		
+		$("#updateUser").on('click',updateUser);	
+				
 		$("#TimeChaxun").on('click',GetTime);
-		$("#HJDW-button").on('click',hjdwDetail);
+		
 		$('#exampleModal').on('show.bs.modal', centerModals);	
-		$('#refresh_button').on('click',refreshBtn);
+		
 		$('#updateHJDW').on('click',updtHjdw);
-		$('#HJRY-button').on('click',hjryDetail);
+		
 		$('#updateHJRY').on('click',updtHjry);		
 		
 		//$("#tijiao").on("submit",tijiaoFun);	
@@ -200,7 +203,7 @@
 					singleSelect:true,
 					//checkboxHeader:true,
 					sidePagination:"client",
-					showColumns: true,
+					showColumns: false,
 		            search: true,
 		            showRefresh: true,
 					onCheck:function(tr,row){											
@@ -295,35 +298,7 @@
 		$('#HJRYtijiao').on('click',updateHJRY);
 	}
 	
-	//用户管理标的可见性
-	function yhglVisibility(){		
-		$("#right-yhgl-div").css("display","block");
-		$("#right-xtrz-div").css("display","none");
-		$("#right-hjdw-div").css("display","none");
-		$("#right-hjry-div").css("display","none");
-	}
-	//系统日志的可见性
-	function xtrzVisibility(){		
-		$("#right-yhgl-div").css("display","none");
-		$("#right-xtrz-div").css("display","block");
-		$("#right-hjdw-div").css("display","none");
-		$("#right-hjry-div").css("display","none");
-			
-	}
-	//汇交单位的可见性
-	function hjdwVisibility(){
-		$("#right-hjdw-div").css("display","block");
-		$("#right-yhgl-div").css("display","none");
-		$("#right-xtrz-div").css("display","none");
-		$("#right-hjry-div").css("display","none");
-	}
-	//汇交人员的可见性
-	function hjryVisibility(){
-		$("#right-hjry-div").css("display","block");
-		$("#right-yhgl-div").css("display","none");
-		$("#right-xtrz-div").css("display","none");
-		$("#right-hjdw-div").css("display","none");
-	}
+	
 	//系统日志的数量
 	function xtrzNum(){
 		//修改	  	
@@ -337,7 +312,8 @@
 	  			console.log("总日志个数：",totalCount);	  			
 	  			$("#xtrzTable").bootstrapTable('destroy').bootstrapTable({
 					ajax:ajaxRequest,
-					pagination:true,					
+					pagination:true,			
+					height:$("#xtrzDiv").height()*0.7,
 					sidePagination:"server",
 					pageSize:"20",
 					pageList:"[20]",
@@ -468,7 +444,7 @@
 		});
 	}
 	//提交框的function
-		function tijiaoFun(){		
+	function tijiaoFun(){		
 		
 		//$('#TJ-Form').bootstrapValidator("validate");
 		//增加用户时，点击提交按钮时对用户所填信息的判断			
