@@ -820,4 +820,6 @@ button:hover{
 	cursor: pointer;
 	font-weight: 800;
 }
-
+a{
+	outline: none;
+}

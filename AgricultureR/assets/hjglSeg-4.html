@@ -1,5 +1,5 @@
-<div id="hjglseg-4" style="width: 95%;height: 100%;margin: 5px auto;">
-	<div id="queryPane" class="queryPane_sjfx">
+<div id="hjglseg-4" style="width: 100%;height: 100%;margin: 5px auto;">
+	<div id="queryPane" style="width: 100%;height: 45px;border-bottom: solid 3.5px #229A56;">
 		<div class="filter_tip" style="margin-left: 15px;">
 			<label for="proQuery">省：</label>
 			<select id="proQuery">
@@ -23,66 +23,172 @@
 		
 		
 	</div>
-	
-	<ul class="nav nav-tabs sjfx_TabPane" role="tablist">
-	    <li role="presentation" class="active"><a href="#dkfx_sjfx" aria-controls="dkfx_sjfx" role="tab" data-toggle="tab">按地块分析</a></li>
-	    <li role="presentation"><a href="#cbgyt_sjfx" aria-controls="cbgyt_sjfx" role="tab" data-toggle="tab">按承包地用途</a></li>
-	    <li role="presentation"><a href="#fcbd_sjfx" aria-controls="fcbd_sjfx" role="tab" data-toggle="tab">按非承包地类别</a></li>
-	     <li role="presentation"><a href="#sfnt_sjfx" aria-controls="sfnt_sjfx" role="tab" data-toggle="tab">按是否基本农田</a></li>
-	     <li role="presentation"><a href="#qzxx_sjfx" aria-controls="qzxx_sjfx" role="tab" data-toggle="tab">按权证信息</a></li>
-	     <li role="presentation"><a href="#cbf_sjfx" aria-controls="cbf_sjfx" role="tab" data-toggle="tab">按承包方</a></li>
-	     <li role="presentation"><a href="#qtfx_sjfx" aria-controls="qtfx_sjfx" role="tab" data-toggle="tab">其他分析</a></li>
-	</ul>
-	<div id="tabContents_sjfx" class="tab-content">
-		
-		
-		<div id="dkfx_sjfx" role="tabpanel" class="tab-pane fade in active" style="width: 100%;height: 100%;">
-			
-			
-		</div>
-		<div id="cbgyt_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">			
-			
-			
-		</div>
-		<div id="fcbd_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
-			
-		</div>
-		<div id="sfnt_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
-
-		</div>
-		<div id="qzxx_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
-			
-			
-		</div>
-		<div id="cbf_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
-
-			
-		</div>
-		<div id="qtfx_sjfx" role="tabpanel" class="tab-pane fade" style="width: 100%;height: 100%;">
-						
+	<div id="filterPane" style="float: left;width:20%;height: calc(100% - 55px);height: -moz-calc(100% - 55px);height: -webkit-calc(100% - 55px);margin: auto 10px;overflow-y: auto;">
+		<div class="panel-group" id="accordion">
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="dkhzLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseOne" style="outline: none;">
+		          	地块汇总
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" style="height: 100%;" class="panel-collapse collapse in">
+		      <div class="panel-body">
+		      	按地块汇总统计分析
+		        <div id="dkhzTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="cbdytLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseTwo" style="outline: none;">
+		          承包地土地用途
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" style="height: 100%;" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	按承包地用途统计分析
+		        <div id="cbdytTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="fcbdLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseThree" style="outline: none;">
+		          非承包地地块
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" style="height: 100%;" class="panel-collapse collapse">
+		      <div class="panel-body">
+		        按非承包地块统计分析的指标：
+		        <div id="fcbdTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="jbntLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseFour" style="outline: none;">
+		          承包地是否基本农田
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseFour" style="height: 100%;" class="panel-collapse collapse">
+		      <div class="panel-body">
+		        按承包地是否基本农田统计分析的指标：
+		        <div id="jbntTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="qzxxLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseFive" style="outline: none;">
+		          权证信息
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseFive" style="height: 100%;" class="panel-collapse collapse">
+		      <div class="panel-body">
+		        按权证信息的统计分析指标：
+		        <div id="qzxxTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">
+		      <h4 class="panel-title" style="text-align: center;">
+		        <a id="cbfLink" data-toggle="collapse" data-parent="#accordion" 
+		          href="#collapseSix" style="outline: none;">
+		          按承包方
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseSix" style="height: 100%;" class="panel-collapse collapse">
+		      <div class="panel-body">
+		        按承包方的统计分析指标：
+		        <div id="cbfTree"></div>
+		      </div>
+		    </div>
+		  </div>
+		  
 		</div>
 	</div>
-	
-	
-	
-	
-	
+	<div id="containerPane" style="float: left;width: 78%;height: calc(100% - 45px);height: -moz-calc(100% - 45px);height: -webkit-calc(100% - 45px);border-left: solid 3.5px #229A56;" >
+			<div id="map1" style="width: 100%;height: 100%;margin: 0px;padding:0px">
+				<img style="position: absolute;
+				z-index: 251;
+				right: 5px;
+				vertical-align: middle;		
+				top:40%;" id="switcher" src="img/left_small.png" />
+				<div style="position: absolute;
+				z-index: 250;
+				background-color: rgba(24,21,202,0.6);
+				top:115px;
+				right: 15px;				
+				height: 600px;
+				width:250px;
+				text-align:center;
+				line-height: 40px;
+				color:white;">
+					<table class="table">
+						<thead>
+			             <th>指标</th>
+			             <th>数量</th>			             
+			            </thead>
+			            <tbody>			            
+			            <tr>
+			                <td>发包方数量</td>
+			                <td>56786665</td>
+			                
+			            </tr>
+			            <tr>
+			                <td>承包地块数量</td>
+			                <td>56786</td>
+			                
+			            </tr>	
+			            <tr>
+			                <td>承包地面积</td>
+			                <td>56786665</td>
+			                
+			            </tr>
+			            <tr>
+			                <td>承包地平均面积</td>
+			                <td>56786665</td>
+			                
+			            </tr>
+			            <tr>
+			            	<td>承包地比率</td>
+			                <td>56786665</td>
+			            </tr>
+			            <tr>
+			            	<td>非承包地块数量</td>
+			                <td>56786665</td>
+			            </tr>
+			            <tr>
+			            	<td>非承包地面积</td>
+			                <td>56786665</td>
+			            </tr>
+			            <tr>
+			            	<td>承包地比率</td>
+			                <td>56786665</td>
+			            </tr>
+			            </tbody>
+					</table>
+				</div>
+			</div>	
+	</div>
 	
 </div>
-<!-- Modal -->
-<div class="modal fade" id="dialogModalSeg_4" tabindex="-1" role="dialog" aria-labelledby="modalTitleSeg_3" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 id="modalTitleSeg_4" class="modal-title"></h4>
-      </div>
-      <div id="modalContentSeg_4" class="modal-body">
-         
-      </div>
-      <div id="modalFooterSeg_4" class="modal-footer">         
-        <button type="button" class="btn btn-default" data-dismiss="modal">确  定</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->

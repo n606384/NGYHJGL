@@ -152,8 +152,13 @@ $(function(){
 			//54、获取全国分省宏观情况信息接口
 			"getQGHGSJUrl":"http://" +IP+ "/cggl/getQGHGSJ" +urlTokenParm,
 			//52、通过行政区划获取汇交次数记录数量接口
-			"getHJCSByXZQHUrl":"http://" +IP+ "/hjyy/getHJCSByXZQH" +urlTokenParm
-			
+			"getHJCSByXZQHUrl":"http://" +IP+ "/hjyy/getHJCSByXZQH" +urlTokenParm,
+			//53	获取地块汇总表统计信息
+			//http://192.168.44.232:8080/rest/sjfx/getDKHZALL
+			"getDKHZALL":"http://"+IP+"/sjfx/getDKHZALL"+urlTokenParm,
+			//54	获取地块汇总表按时间统计信息
+			//http://192.168.44.232:8080/rest/sjfx/getDKHZByTime
+			"getDKHZByTime":"http://192.168.44.232:8080/rest/sjfx/getDKHZByTime"+urlTokenParm
 		};
 	initHJGL();
 	var aa = null;
