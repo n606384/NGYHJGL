@@ -14,9 +14,10 @@ jQuery.ajaxSetup({
 	$.managerResult = function(){
 		console.log("进入数据分析页面");
 		initResize();
+		initMap();
 		initPage();
 		initDomEvents();
-		rendererDKHZ();
+		
 	}
 	
 	function initResize(){
@@ -24,61 +25,17 @@ jQuery.ajaxSetup({
 		var height = $("#paneLevel1").height() - 10;
 		$("#hjglseg-4").height(height);
 		$("#hjglseg-4").width(width);
-	}
-	
-	$(window).resize = initResize();
-	function rendererDKHZ(){
-		
-		var postDKHZDist = $.ajax({
-			type:"post",
-			url:app.postUrls.getDKHZALL,
-			async:true,
-			dataType:'json',
-			data:{
-				"start":filter.start,
-				"end":filter.end,
-				"xzqh":filter.bm
-			}
-			
-		});
-		var postDKHZTime = $.ajax({
-			type:"post",
-			url:app.postUrls.getDKHZByTime,
-			async:true,
-			dataType:'json',
-			data:{
-				"start":filter.start,
-				"end":filter.end,
-				"xzqh":filter.bm
-			}
-			
-		});
-		$.when(postDKHZDist,postDKHZTime).then(function(res1,res2){
-			console.log("获取汇总地块信息成功_行政区",res1);
-			console.log("获取汇总地块信息成功——时间",res2);
-			appSJFX.dkhzDataDist = res1[0];
-			appSJFX.dkhzDataTime = res1[0];
-		})
+		$("#queryPane").width(width);
+		$("#filterPane").width(width*0.2);
+		$("#containerPane").width(width*0.8 - 3.5);
 		
 		
 	}
 	
-	//获取按时间排列的地块汇总数据
-	function getHZDTDataByTime(){
-		
-		
-	}
+	$(window).resize(initResize);
 	
-	//获取按行政区排列的地块汇总数据
-	function getHZDTDataByDist(){
-		
-		$.ajax({
-			type:"post",
-			url:app.postUrls.getDKHZALL,
-			async:true
-		});
-	}
 	
+		
 	function initDomEvents(){
 		$("#cbdytLink").on("click", function(){
 			
@@ -100,6 +57,25 @@ jQuery.ajaxSetup({
 			
 			
 		});
+		var switchFlag = false;
+		//浮动框折叠事件
+		$("#switcher").on('click', function(){
+			if(!switchFlag){
+				$("#switcher").attr("src","img/right_big.png");
+				$("#floatContainer_sjfx").attr('class','floatContainerOn');
+				$("#switcher").attr('class','switcherOn');
+				
+				
+				switchFlag = true;
+			}else{
+				$("#switcher").attr("src","img/left_big.png");
+				$("#floatContainer_sjfx").attr('class','floatContainerOff');
+				$("#switcher").attr('class','switcherOff');
+				
+				switchFlag = false;
+			}
+			
+		});
 	}
 	
 	
@@ -112,7 +88,7 @@ jQuery.ajaxSetup({
 	
 	function initPage(){
 		console.log("数据分析页面初始化中...");
-		initMap();
+		
 		//地块汇总条件树
 		$dkhzTree.treeview({
 			data:dkhzTree,
@@ -534,11 +510,35 @@ jQuery.ajaxSetup({
 			"esri/SpatialReference",
 			"esri/geometry/Extent",
 			"esri/layers/ArcGISTiledMapServiceLayer",
-			"esri/layers/ArcGISDynamicMapServiceLayer",			
+			"esri/layers/ArcGISDynamicMapServiceLayer",	
+			"esri/layers/GraphicsLayer",
+			"esri/InfoTemplate",
+			"esri/layers/FeatureLayer",
+			"esri/tasks/ClassBreaksDefinition", 			"esri/tasks/AlgorithmicColorRamp",
+    		"esri/tasks/GenerateRendererParameters", 			"esri/tasks/GenerateRendererTask",
+   			"esri/symbols/SimpleLineSymbol", 
+   			"esri/symbols/SimpleFillSymbol",
+   			"esri/renderers/ClassBreaksRenderer",
+   			"esri/Color",			
+			"esri/tasks/QueryTask",
+ 			"esri/tasks/query",
+ 			"esri/graphic",
+ 			"esri/TimeExtent",
+ 			
+ 			"esri/dijit/TimeSlider",
+			
+			"dojo/dom",
 			"dojo/domReady!"
 		], function(Map, SpatialReference,
-			Extent, AGSTMSLayer,
-			AGSDMSLayer
+			Extent, AGSTMSLayer,AGSDMSLayer,
+			GraphicsLayer, InfoTemplate, FeatureLayer,
+			ClassBreaksDefinition,AlgorithmicColorRamp,
+			GenerateRendererParameters, GenerateRendererTask,
+			SimpleLineSymbol, SimpleFillSymbol, ClassBreaksRenderer,
+			Color, QueryTask, Query, Graphic,TimeExtent,
+			TimeSlider,
+			
+			dom
 		){
 			
 			var extent = new Extent({
@@ -547,7 +547,7 @@ jQuery.ajaxSetup({
 				xmax:1.807188853090923E7,
 				ymax:7115210.934590889, 
 				spatialReference:{wkid:102100}});
-				
+			
 			map = new Map('map1',{
 				//center:[79,42],
 				//zoom:4,
@@ -561,6 +561,148 @@ jQuery.ajaxSetup({
 			
 			map.addLayer(dLayer);
 			
+			var fLayer = new FeatureLayer(dUrl+ "/2",{
+				mode:FeatureLayer.MODE_ONDEMAND,
+				outFields:["PAC","Code"]
+			});
+			
+			map.addLayer(fLayer);
+			
+			initializeMapChart();
+			
+			var timeLineShow = false;
+			$("#timeLine").on('click', temporalRenderer);
+			
+			
+			
+			function initializeMapChart(){
+				var postDKHZDist = $.ajax({
+					type:"post",
+					url:app.postUrls.getDKHZALL,
+					async:true,
+					dataType:'json',
+					data:{
+						"start":filter.start,
+						"end":filter.end,
+						"xzqh":filter.bm
+					}
+					
+				});
+				var postDKHZTime = $.ajax({
+					type:"post",
+					url:app.postUrls.getDKHZByTime,
+					async:true,
+					dataType:'json',
+					data:{
+						"start":filter.start,
+						"end":filter.end,
+						"xzqh":filter.bm
+					}
+					
+				});
+				$.when(postDKHZDist,postDKHZTime).then(function(res1,res2){
+					console.log("获取汇总地块信息成功_行政区",JSON.stringify(res1[0]));
+					console.log("获取汇总地块信息成功——时间",JSON.stringify(res2[0]));
+					appSJFX.dkhzDataDist = res1[0];
+					appSJFX.dkhzDataTime = res2[0];
+					
+					fullfillTableSJFX();
+					rendererMap(fLayer,"dist");
+					
+				});
+			}
+			function fullfillTableSJFX(){
+				
+				$("#floatTable_sjfx tbody tr:eq(0) td:eq(1)").html(appSJFX.dkhzDataDist["fbfsl"][0]);
+				$("#floatContainer_sjfx tbody tr:eq(1) td:eq(1)").html(appSJFX.dkhzDataDist["cbdkzs"][0]);
+				$("#floatContainer_sjfx tbody tr:eq(2) td:eq(1)").html(appSJFX.dkhzDataDist["cbdkzmj"][0]);
+				$("#floatContainer_sjfx tbody tr:eq(3) td:eq(1)").html(appSJFX.dkhzDataDist["fcbdkzs"][0]);
+				$("#floatContainer_sjfx tbody tr:eq(4) td:eq(1)").html(appSJFX.dkhzDataDist["fcbdkzmj"][0]);
+				$("#floatContainer_sjfx tbody tr:eq(5) td:eq(1)").html(appSJFX.dkhzDataDist["bfqzsl"][0]);
+				//$("#floatContainer_sjfx tr").eq(0).find("td").eq(1).html("ddd");
+				
+			}
+			
+			function rendererMap(layer, type){
+				var br;
+				if(type == "dist"){
+					br = new ClassBreaksRenderer(null, calculateBreaksDist);
+				}else if(type == "time"){
+					br = new ClassBreaksRenderer(null, calculateBreaksTime);
+				}
+				var outline = SimpleLineSymbol("solid", new Color("#444"), 1);
+			    br.addBreak(0, 5000, new SimpleFillSymbol("solid", outline, new Color([255, 255, 178, 0.55])));
+            	br.addBreak(5001, 7500, new SimpleFillSymbol("solid", outline, new Color([254, 204, 92, 0.55])));
+            	br.addBreak(7501, 10000, new SimpleFillSymbol("solid", outline, new Color([253, 141, 60, 0.55])));
+            	br.addBreak(10001, Infinity, new SimpleFillSymbol("solid", outline, new Color([227, 26, 28, 0.55])));
+            	
+            	layer.setRenderer(br);
+		        
+			}
+			function calculateBreaksTime(g){
+				var value = 0;
+				
+				return 0;
+			}
+			function calculateBreaksDist(g){				
+				var value = 0;
+				var code = g.attributes['PAC'];
+				for(var i = 0; i<appSJFX.dkhzDataDist.xzqh.length;i++){
+					if(code == appSJFX.dkhzDataDist.xzqh[i]){
+						value = appSJFX.dkhzDataDist["fcbdkzs"][i]+appSJFX.dkhzDataDist["cbdkzs"][i];
+						break;
+					}
+				}
+				
+				return value;
+			}
+			
+			//时态渲染
+			var regions = [];
+			function temporalRenderer(){
+				fLayer.hide();
+								
+				temporal_featureLayer = new FeatureLayer(dUrl +"/2", {
+			 	    id:"tempFl",
+		            mode: FeatureLayer.MODE_ONDEMAND,
+		            trackIdField:"PAC",		          
+		            outFields: ["*"]
+		        });
+		     	map.addLayer(temporal_featureLayer);
+		     	
+		     	var data = appSJFX.dkhzDataTime;
+		     	console.log("appSJFX.dkhzDataTime", appSJFX.dkhzDataTime);
+		     	var len = data["time"].length;
+		     	var startTime = new Date(parseInt(data["time"][0].split('-')[0]), (parseInt(data["time"][0].split('-')[1])-1),15);
+		     	var endTime = new Date(parseInt(data["time"][len - 1].split('-')[0]), (parseInt(data["time"][len-1].split('-')[1])-1),15);
+		     	var timeExtent = new TimeExtent(startTime, endTime);
+		     	
+		     	var timeSlider = new TimeSlider({
+		     		style:"width:100%"
+		     	},dom.byId("timeSlider"));
+		     	
+		     	timeSlider.setThumbCount(1);
+	            timeSlider.createTimeStopsByTimeInterval(timeExtent, 1, "esriTimeUnitsMonths");
+	            
+	            timeSlider.setThumbIndexes([0,1]);
+	            timeSlider.setThumbMovingRate(1000);
+	            timeSlider.setLoop(true);
+	            timeSlider.setLabels(data["time"]);
+	            timeSlider.startup();
+				console.log(timeExtent);
+				timeSlider.on("time-extent-change",renderer);
+				rendererMap(temporal_featureLayer,"time");
+				
+			}
+			var endStr = "2016-01";
+			function renderer(extent){
+				console.log("extent",extent);
+				var endTime = extent.endTime;
+				var year = endTime.getFullYear();
+				var month = endTime.getMonth()-1;
+				var endStr = year+"-"+month;
+				rendererMap(temporal_featureLayer,"time");
+			}
 			
 			
 		});

@@ -799,27 +799,93 @@ button:hover{
 	width: 100%;
 	height: calc(100% - 90px);
 	height: -webkit-calc(100% - 90px);
-	height: -moz-calc(100% - 90px);
+
 }
-.sjfx_TabPane{
-	border-bottom: solid 1.5px #F1A01B;
+
+
+/*********数据分析模块***********/
+table thead th{
+	text-align: center;
 }
-.sjfx_TabPane li[class = 'active']>a{
-	background-color: #F1A01B;
-	color: white;
+.floatContainerOff{
+	position: absolute;
+	z-index: 250;
+	background-color: rgba(24,21,202,0.6);
+	top:130px;
+	right: 5px;				
+	height: 600px;
+	width:0px;
+	text-align:center;
+	line-height: 40px;
+	color:white;
+	overflow: hidden;
+	margin-left: 5px;
+	margin-right: 5px;
 }
-.sjfx_TabPane li[class = 'active'] a:focus{
-	background-color: #F1A01B;
-	color: white;
+.floatContainerOn{
+	position: absolute;
+	z-index: 250;
+	background-color: rgba(24,21,202,0.6);
+	top:130px;
+	right: 5px;				
+	height: 600px;
+	width:250px;
+	text-align:center;
+	line-height: 40px;
+	color:white;
+	margin: auto 5px;
 }
-.sjfx_r_pane{
-	border-bottom: solid 3.5px #229A56;
-	float: left;
+.switcherOff{
+	position: absolute;
+	z-index: 251;
+	right: 8px;
+	vertical-align: middle;		
+	top:40%;
 }
-.glyphicon:hover{
+.switcherOff:hover{
+	border-radius: 75%;
 	cursor: pointer;
-	font-weight: 800;
+	background-color: rgb(255,255,255);
 }
-a{
-	outline: none;
+.switcherOn{
+	position: absolute;
+	z-index: 251;
+	vertical-align: middle;
+	right: 260px;
+	top:40%;
 }
+.switcherOn:hover{	
+	border-radius: 75%;
+	cursor: pointer;
+	background-color: rgb(255,255,255);
+}
+#floatContainer_sjfx table thead h3:hover{
+	cursor: pointer;
+	background-color: #229A56;
+}
+#floatContainer_sjfx table tbody tr:hover{
+	cursor: pointer;
+	background-color: #229A56;
+}
+.floatToolbars{
+	position: absolute;
+	z-index: 251;
+	top: 120px;
+	left: calc(20%+35px);
+	left: -moz-calc(20%+35px);
+	left: -webkit-calc(20% + 35px);
+	width: 300px;
+	height: 40px;
+}
+#timeSlider{
+	position: absolute;
+	z-index: 254;
+	bottom: 65px;	
+	margin: auto;
+	
+}
+
+
+
+
+/********************/
